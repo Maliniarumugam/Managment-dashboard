@@ -1,0 +1,20 @@
+<div class="profile">
+  <h2>User Profile</h2>
+  <div *ngIf="user$ | async as user">
+    <img [src]="user.profilePicture" alt="Profile Picture" width="150" height="150">
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+  </div>
+  <form (ngSubmit)="onSave()">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="name" name="name">
+
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="email" name="email">
+
+    <label for="profilePicture">Profile Picture URL:</label>
+    <input id="profilePicture" [(ngModel)]="profilePicture" name="profilePicture">
+
+    <button type="submit">Save</button>
+  </form>
+</div>

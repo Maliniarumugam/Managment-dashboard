@@ -1,0 +1,35 @@
+<div class="task-container">
+  <h2>Task Manager</h2>
+  <div>
+    <h3>Add Task</h3>
+    <form (ngSubmit)="addTask()">
+      <label>Title: <input [(ngModel)]="newTask.title" name="title" required></label>
+      <label>Description: <input [(ngModel)]="newTask.description" name="description" required></label>
+      <button type="submit">Add Task</button>
+    </form>
+  </div>
+  <div *ngIf="editTask">
+    <h3>Edit Task</h3>
+    <form (ngSubmit)="updateTask()">
+      <label>Title: <input [(ngModel)]="editTask.title" name="title" required></label>
+      <label>Description: <input [(ngModel)]="editTask.description" name="description" required></label>
+      <button type="submit">Update Task</button>
+    </form>
+  </div>
+  <div *ngIf="tasks.length > 0">
+    <h3>Tasks</h3>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td><button (click)="setEditTask(task)">Edit</button>
+        <button (click)="deleteTask(task.id)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
